@@ -31,8 +31,8 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          context: ${{ matrix.os }}-${{ matrix.version }}
-          file: ${{ matrix.os }}-${{ matrix.version }}/Dockerfile
+          context: ${{ matrix.os }}/${{ matrix.version }}
+          file: ${{ matrix.os }}/${{ matrix.version }}/Dockerfile
           tags: ghcr.io/${{ github.repository }}-${{ matrix.os}}:${{ matrix.version }}-${{ github.run_number }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}-${{ matrix.os }}:buildcache
           cache-to: type=registry,ref=ghcr.io/${{ github.repository }}-${{ matrix.os }}:buildcache,mode=max
