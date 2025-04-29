@@ -35,5 +35,5 @@ jobs:
           context: ${{ matrix.os }}/${{ matrix.version }}
           file: ${{ matrix.os }}/${{ matrix.version }}/Dockerfile
           tags: ghcr.io/${{ github.repository_owner }}/${{ matrix.os }}-${{ matrix.version }}:v${{ github.run_number }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}-${{ matrix.os }}:buildcache
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}-${{ matrix.os }}:buildcache,mode=max
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.os }}-${{ matrix.version }}:buildcache
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository_owner }}/${{ matrix.os }}-${{ matrix.version }}:buildcache,mode=max
