@@ -22,7 +22,7 @@ jobs:
           github-actor: ${{ github.actor }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/ubuntu-${{ matrix.version }}:${{ github.sha }}
-          path: ubuntu/${{ matrix.version }}/Dockerfile
+          path: ubuntu/${{ matrix.version }}
           cache: type=gha
         
   ansible:
@@ -39,6 +39,6 @@ jobs:
           github-actor: ${{ github.actor }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/ansible-${{ matrix.version }}:${{ github.sha }}
-          path: ansible/${{ matrix.version }}/Dockerfile
+          path: ansible/${{ matrix.version }}
           push: false
           cache: type=gha
