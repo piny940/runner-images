@@ -14,6 +14,7 @@ jobs:
       matrix:
         os:
           - ubuntu
+          - ansible
         version:
           - latest
 
