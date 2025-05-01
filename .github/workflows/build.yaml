@@ -9,12 +9,33 @@ permissions:
   contents: read
   packages: write
 jobs:
+  filter:
+    runs-on: ubuntu-latest
+    outputs:
+      ansible: ${{ steps.path-filter.outputs.ansible }}
+      ubuntu: ${{ steps.path-filter.outputs.ubuntu }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: path-filter
+        with:
+          filters: |
+            ansible:
+              - "ansible/**"
+              - ".github/workflows/ci.yaml"
+              - ".github/actions/**"
+            ubuntu:
+              - "ubuntu/**"
+              - ".github/workflows/ci.yaml"
+              - ".github/actions/**"
+
   ubuntu:
+    needs: filter
+    if: needs.filter.outputs.ubuntu == 'true'
     strategy:
       matrix:
         version:
           - latest
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,11 +51,12 @@ jobs:
           cache: type=registry,ref=ghcr.io/${{ github.repository_owner }}/ubuntu-${{ matrix.version }}:buildcache
 
   ansible:
+    needs: filter
+    if: needs.filter.outputs.ansible == 'true'
     strategy:
       matrix:
         version:
           - latest
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
