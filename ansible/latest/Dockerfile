@@ -1,4 +1,4 @@
-FROM ghcr.io/piny940/ubuntu-latest:v17
+FROM ghcr.io/piny940/ubuntu-latest:v18
 
 RUN --mount=type=cache,target=/var/cache/apt \
   apt update && \
