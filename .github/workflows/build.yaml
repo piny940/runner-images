@@ -15,7 +15,7 @@ jobs:
       ansible: ${{ steps.path-filter.outputs.ansible }}
       ubuntu: ${{ steps.path-filter.outputs.ubuntu }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: dorny/paths-filter@v3
         id: path-filter
         with:
@@ -38,7 +38,7 @@ jobs:
           - latest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/docker-build
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
           - latest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./.github/actions/docker-build
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
