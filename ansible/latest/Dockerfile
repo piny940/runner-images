@@ -1,4 +1,4 @@
-FROM ghcr.io/piny940/ubuntu-latest:v29
+FROM ghcr.io/piny940/ubuntu-latest:v31
 
 RUN --mount=type=cache,target=/var/cache/apt \
   apt update && \
